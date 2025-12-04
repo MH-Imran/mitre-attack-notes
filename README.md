@@ -29,6 +29,10 @@ Using stolen or weak credentials to log in normally.
 Trying to hide malicious content using encoding or packing.  
 **What I'm learning:** spotting strange file names, encoded strings, or sudden script changes.
 
+### **T1047 – Windows Management Instrumentation**
+Attackers use WMI to run commands or gather system info,sometimes even on remote machines.  
+**What I'm learning:** spotting unusual WMI executions, remote calls, strange parent processes, and WMI-Activity logs that don’t match normal behavior.
+
 ---
 
 ## More to come
