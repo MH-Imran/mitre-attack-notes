@@ -33,6 +33,11 @@ Trying to hide malicious content using encoding or packing.
 Attackers use WMI to run commands or gather system info,sometimes even on remote machines.  
 **What I'm learning:** spotting unusual WMI executions, remote calls, strange parent processes, and WMI-Activity logs that don’t match normal behavior.
 
+### **T1110 – Brute Force**
+Attackers attempt many passwords or use leaked credentials to break into accounts or systems (SSH, RDP, VPN, web logins, cloud accounts).
+**What I'm learning:** spotting repeated login failures, password spraying patterns, successful logins after many failures, unusual source IPs, impossible travel, and signs of credential stuffing from breached password lists.
+
+
 ---
 
 ## More to come
