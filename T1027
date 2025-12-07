@@ -1,0 +1,89 @@
+# T1027 – Obfuscated Files or Information
+
+**Technique:** Obfuscated Files or Information  
+**Tactic:** Defense Evasion
+
+These are my personal notes on T1027. I tried to write them in a simple, “real-life” way so I actually remember what this technique is about.
+
+---
+
+## What This Technique Really Means
+
+T1027 basically comes down to one idea:
+
+**Attackers hide things.**
+
+They don’t always use clean, readable scripts.  
+Instead, they take their code and “mess it up” so it’s harder to understand.
+
+Some ways they hide stuff:
+
+- turning commands into long base64 strings  
+- crushing JavaScript into one giant ugly line  
+- hiding macros inside Office files  
+- packing or encrypting malware  
+- using weird variable names or random characters  
+- breaking code into tiny pieces that reassemble later  
+
+The goal is simple:  
+**make the bad stuff less obvious.**
+
+---
+
+## Why Attackers Do This
+
+If the command or file looks normal (or just confusing), then:
+
+- antivirus might ignore it  
+- basic detection rules won’t match it  
+- analysts won’t understand it right away  
+
+Obfuscation gives attackers extra time — even a few minutes can matter.
+
+---
+
+## Why This Matters for SOC Analysts
+
+Even if I can’t “read” the script, the behavior still tells the truth.
+
+Signs something is off:
+
+- PowerShell commands filled with base64  
+- scripts that look completely unreadable  
+- file names that look randomly generated  
+- long strings that don’t look like normal code  
+- encoded payloads inside HTTP requests  
+- strange activity right after a script runs  
+
+As a SOC analyst, I don’t need to fully decode the script every time.  
+I just need to notice that **something doesn’t look normal**.
+
+---
+
+## What Clicked for Me
+
+- Obfuscation doesn’t make the attack invisible — it just makes it look confusing.  
+- The logs still show important clues (processes, file paths, network connections).  
+- This technique often works together with:
+  - T1059 (Command and Scripting)
+  - T1204 (User Execution)
+  - T1110 (Brute Force → coming next)
+- If I see a long encoded string in PowerShell, it’s basically a red flag by itself.
+
+Basically:  
+**When the code looks weird, the behavior usually looks suspicious too.**
+
+---
+
+## What I Want to Try Later in My Home Lab
+
+Once Security Onion / Sysmon are ready, I want to test:
+
+- running a base64 PowerShell command  
+- watching how it appears in logs  
+- decoding the string to see what it really was  
+- trying a packed script to see how detection tools react  
+- writing a simple detection rule for “encoded PowerShell”  
+
+These small experiments will help me understand how obfuscation appears in real logs — and how defenders detect it.
+
